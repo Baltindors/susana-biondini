@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: Baltindors/leosan-info
+  branch: main
+
+media_folder: /public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: /src/content/blog
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Description, name: description, widget: text }
+      - { label: "Audio MP3", name: audio, widget: file, required: false }
+      - { label: "Audio Timestamps (.vtt)", name: vtt, widget: file, required: false }
+      - { label: Body, name: body, widget: markdown }

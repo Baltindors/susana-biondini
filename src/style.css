@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --paper: #ffffff;
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
+  --accent: #2d4cb1;
+  --line: rgb(0 0 0 / 0.08);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #000000;
+    --ink: #f5f5f7;
+    --muted: #a1a1a6;
+    --accent: #9aacef;
+    --line: rgb(255 255 255 / 0.12);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+.surface-card {
+  corner-shape: squircle;
+}
+
+.logo-mark {
+  display: inline-block;
+  aspect-ratio: 284 / 388;
+  background-color: currentColor;
+  mask-image: url('/logo.png');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: url('/logo.png');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.prose {
+  --tw-prose-links: var(--accent);
+  --tw-prose-invert-links: var(--accent);
+}
+
+.prose .active-audio {
+  background-color: rgb(250 204 21 / 0.7);
+  font-weight: 700;
+  border-radius: 0.25rem;
+  color: #1d1d1f;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 350ms ease,
+    transform 350ms ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
+  }
+
+  .page-enter-from,
+  .page-leave-to {
+    transform: none;
+  }
+}

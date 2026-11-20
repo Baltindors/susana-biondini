@@ -28,5 +28,35 @@ export default defineConfig({
         copyFileSync('dist/index.html', 'dist/404.html')
       },
     },
+    {
+      name: 'serve-admin-cms',
+      configureServer(server) {
+        // Vite SPA fallback steals /admin/ and returns the Vue shell; force the CMS HTML.
+        server.middlewares.use((req, _res, next) => {
+          const raw = req.url || ''
+          const pathOnly = raw.split('?')[0]
+          if (
+            pathOnly === '/susana-biondini/admin' ||
+            pathOnly === '/susana-biondini/admin/'
+          ) {
+            req.url = raw.replace(pathOnly, '/susana-biondini/admin/index.html')
+          }
+          next()
+        })
+      },
+      configurePreviewServer(server) {
+        server.middlewares.use((req, _res, next) => {
+          const raw = req.url || ''
+          const pathOnly = raw.split('?')[0]
+          if (
+            pathOnly === '/susana-biondini/admin' ||
+            pathOnly === '/susana-biondini/admin/'
+          ) {
+            req.url = raw.replace(pathOnly, '/susana-biondini/admin/index.html')
+          }
+          next()
+        })
+      },
+    },
   ],
 })

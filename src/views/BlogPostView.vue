@@ -109,7 +109,7 @@ onBeforeUnmount(clearHighlight)
 <template>
   <main class="mx-auto max-w-3xl px-5 py-12 md:py-20">
     <article v-if="post">
-      <RouterLink to="/blog" class="text-sm text-accent">Volver al blog</RouterLink>
+      <RouterLink to="/blog" class="text-sm text-accent">Volver a escritos</RouterLink>
       <p class="mt-6 text-sm text-muted">{{ post.dateLabel }}</p>
       <h1 class="mt-2 font-serif text-4xl font-medium tracking-tight">{{ post.title }}</h1>
       <p class="mt-3 text-lg text-muted">{{ post.description }}</p>
@@ -129,8 +129,8 @@ onBeforeUnmount(clearHighlight)
 
     <div v-else>
       <h1 class="font-serif text-3xl font-medium tracking-tight">Entrada no encontrada</h1>
-      <p class="mt-3 text-muted">Esa página no forma parte del blog.</p>
-      <RouterLink to="/blog" class="mt-6 inline-block text-sm text-accent">Volver al blog</RouterLink>
+      <p class="mt-3 text-muted">Esa página no forma parte de los escritos.</p>
+      <RouterLink to="/blog" class="mt-6 inline-block text-sm text-accent">Volver a escritos</RouterLink>
     </div>
   </main>
 </template>

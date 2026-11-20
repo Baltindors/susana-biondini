@@ -10,8 +10,8 @@ public_folder: /uploads
 
 collections:
   - name: blog
-    label: Entradas del blog
-    label_singular: Entrada del blog
+    label: Escritos
+    label_singular: Escrito
     folder: /src/content/blog
     create: true
     extension: md

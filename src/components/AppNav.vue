@@ -11,13 +11,21 @@ const { y } = useWindowScroll()
 const scrolled = computed(() => y.value > 0)
 
 const links = [
-  { to: '/', label: 'Perfil' },
-  { to: '/blog', label: 'Blog' },
+  { id: 'perfil', to: { path: '/' }, label: 'Perfil' },
+  { id: 'obra', to: { path: '/', hash: '#obra' }, label: 'Obra' },
+  { id: 'escritos', to: { path: '/blog' }, label: 'Escritos' },
 ]
 
 const brandMark = computed(
   () => profile.portraits?.hero?.src ?? `${import.meta.env.BASE_URL}images/susy_headshot_2.png`,
 )
+
+function isLinkActive(link) {
+  if (link.id === 'obra') return route.path === '/' && route.hash === '#obra'
+  if (link.id === 'perfil') return route.path === '/' && route.hash !== '#obra'
+  if (link.id === 'escritos') return route.path.startsWith('/blog')
+  return false
+}
 
 watch(isDesktop, (desktop) => {
   if (desktop) open.value = false
@@ -51,15 +59,15 @@ watch(
       <nav class="hidden items-center gap-6 md:flex" aria-label="Navegación principal">
         <RouterLink
           v-for="link in links"
-          :key="link.to"
-          v-slot="{ href, navigate, isExactActive }"
+          :key="link.id"
+          v-slot="{ href, navigate }"
           :to="link.to"
           custom
         >
           <a
             :href="href"
             class="text-sm transition-colors"
-            :class="isExactActive ? 'text-accent' : 'text-muted hover:text-ink'"
+            :class="isLinkActive(link) ? 'text-accent' : 'text-muted hover:text-ink'"
             @click="navigate"
           >
             {{ link.label }}
@@ -116,15 +124,15 @@ watch(
     >
       <RouterLink
         v-for="link in links"
-        :key="link.to"
-        v-slot="{ href, navigate, isExactActive }"
+        :key="link.id"
+        v-slot="{ href, navigate }"
         :to="link.to"
         custom
       >
         <a
           :href="href"
           class="block py-3 text-base"
-          :class="isExactActive ? 'text-accent' : 'text-ink'"
+          :class="isLinkActive(link) ? 'text-accent' : 'text-ink'"
           @click="navigate"
         >
           {{ link.label }}

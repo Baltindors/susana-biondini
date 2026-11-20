@@ -5,7 +5,7 @@ import AppCard from '../components/AppCard.vue'
 import { posts } from '../content/posts.js'
 import { profile } from '../data/profile.js'
 
-useTitle('Blog · Susana I. Biondini')
+useTitle('Escritos · Susana I. Biondini')
 
 const rise = {
   initial: { opacity: 0, y: 12 },
@@ -30,7 +30,7 @@ const brandMark =
         width="64"
         height="64"
       />
-      <h1 class="mt-5 font-serif text-4xl font-medium tracking-tight md:text-5xl">Blog</h1>
+      <h1 class="mt-5 font-serif text-4xl font-medium tracking-tight md:text-5xl">Escritos</h1>
       <p class="mt-3 text-lg text-muted">
         Crónicas, poemas y novedades del universo literario y teatral de Susana I. Biondini.
       </p>

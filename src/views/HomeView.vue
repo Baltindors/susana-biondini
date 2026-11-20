@@ -116,7 +116,7 @@ const rise = {
       </div>
     </section>
 
-    <section v-if="profile.books.length" class="mt-14">
+    <section v-if="profile.books.length" id="obra" class="mt-14 scroll-mt-24">
       <h2 class="font-serif text-2xl font-medium tracking-tight text-ink">Obra publicada</h2>
       <p class="mt-3 text-muted">
         Libros y microteatro disponibles para lectura y compra.

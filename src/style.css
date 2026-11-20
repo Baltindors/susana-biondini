@@ -2,65 +2,58 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --paper: #ffffff;
-  --ink: #1d1d1f;
-  --muted: #6e6e73;
-  --accent: #2d4cb1;
-  --line: rgb(0 0 0 / 0.08);
+  --paper: #faf8f5;
+  --card: #ffffff;
+  --ink: #1c1917;
+  --muted: #6b6560;
+  --accent: #7a2e3a;
+  --line: rgb(28 25 23 / 0.1);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #000000;
-    --ink: #f5f5f7;
-    --muted: #a1a1a6;
-    --accent: #9aacef;
-    --line: rgb(255 255 255 / 0.12);
+    --paper: #1a1714;
+    --card: #241f1b;
+    --ink: #f5f0ea;
+    --muted: #a39e97;
+    --accent: #c98993;
+    --line: rgb(245 240 234 / 0.12);
     color-scheme: dark;
   }
 }
 
 @theme inline {
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
   --color-paper: var(--paper);
+  --color-card: var(--card);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-line: var(--line);
   --radius-card: 1.25rem;
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  --shadow-card: 0 1px 2px rgb(28 25 23 / 0.04), 0 8px 24px rgb(28 25 23 / 0.06);
 }
 
 .surface-card {
+  background-color: var(--card);
   corner-shape: squircle;
 }
 
-.logo-mark {
-  display: inline-block;
-  aspect-ratio: 284 / 388;
-  background-color: currentColor;
-  /* Relative to bundled CSS under /assets so Vite `base` (project Pages) resolves correctly */
-  mask-image: url(../logo.png);
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-  -webkit-mask-image: url(../logo.png);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-}
-
 .prose {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
   --tw-prose-links: var(--accent);
   --tw-prose-invert-links: var(--accent);
+  font-family: var(--font-serif);
 }
 
 .prose .active-audio {
   background-color: rgb(250 204 21 / 0.7);
   font-weight: 700;
   border-radius: 0.25rem;
-  color: #1d1d1f;
+  color: #1c1917;
 }
 
 .page-enter-active,

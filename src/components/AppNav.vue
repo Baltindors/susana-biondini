@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useMediaQuery, useWindowScroll } from '@vueuse/core'
-import LogoMark from './LogoMark.vue'
+import { profile } from '../data/profile.js'
 
 const route = useRoute()
 const open = ref(false)
@@ -11,9 +11,13 @@ const { y } = useWindowScroll()
 const scrolled = computed(() => y.value > 0)
 
 const links = [
-  { to: '/', label: 'Profile' },
+  { to: '/', label: 'Perfil' },
   { to: '/blog', label: 'Blog' },
 ]
+
+const brandMark = computed(
+  () => profile.portraits?.hero?.src ?? `${import.meta.env.BASE_URL}images/susy_headshot_2.png`,
+)
 
 watch(isDesktop, (desktop) => {
   if (desktop) open.value = false
@@ -34,11 +38,17 @@ watch(
   >
     <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3">
       <RouterLink to="/" class="flex items-center gap-2.5 text-sm font-medium tracking-tight text-ink">
-        <LogoMark class="h-7 text-accent" />
-        Susana Biondini
+        <img
+          :src="brandMark"
+          alt=""
+          class="size-7 rounded-full object-cover object-top ring-1 ring-line"
+          width="28"
+          height="28"
+        />
+        <span class="font-serif">Susana I. Biondini</span>
       </RouterLink>
 
-      <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      <nav class="hidden items-center gap-6 md:flex" aria-label="Navegación principal">
         <RouterLink
           v-for="link in links"
           :key="link.to"
@@ -62,7 +72,7 @@ watch(
         class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink md:hidden"
         :aria-expanded="open"
         aria-controls="mobile-nav"
-        :aria-label="open ? 'Close menu' : 'Open menu'"
+        :aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
         @click="open = !open"
       >
         <svg
@@ -102,7 +112,7 @@ watch(
       v-show="open"
       id="mobile-nav"
       class="border-t border-line px-5 py-2 md:hidden"
-      aria-label="Mobile"
+      aria-label="Navegación móvil"
     >
       <RouterLink
         v-for="link in links"

@@ -10,17 +10,17 @@ public_folder: /uploads
 
 collections:
   - name: blog
-    label: Blog Posts
-    label_singular: Blog Post
+    label: Entradas del blog
+    label_singular: Entrada del blog
     folder: /src/content/blog
     create: true
     extension: md
     format: yaml-frontmatter
     slug: "{{date | date('YYYY-MM-DD')}}-{{slug}}"
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Publish Date, name: date, widget: datetime }
-      - { label: Description, name: description, widget: text }
+      - { label: Título, name: title, widget: string }
+      - { label: Fecha de publicación, name: date, widget: datetime }
+      - { label: Descripción, name: description, widget: text }
       - { label: "Audio MP3", name: audio, widget: file, required: false }
-      - { label: "Audio Timestamps (.vtt)", name: vtt, widget: file, required: false }
-      - { label: Body, name: body, widget: markdown }
+      - { label: "Marcas de tiempo del audio (.vtt)", name: vtt, widget: file, required: false }
+      - { label: Cuerpo, name: body, widget: markdown }

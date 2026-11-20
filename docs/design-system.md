@@ -1,15 +1,20 @@
 # Design system
 
-Mobile-first portfolio and blog. The visual language mixes Apple’s type and whitespace with Material’s quiet depth: one accent, high-contrast text, and cards that sit just off the page.
+Mobile-first literary portfolio and blog for Susana I. Biondini. The visual language is editorial and bookish: warm paper surfaces, a restrained burgundy accent, expressive serif headings, and quiet cards that sit just off the page.
 
 ## Typography
 
-Use the system sans stack. On Apple devices that is San Francisco (`SF Pro Text` via `-apple-system`). On Windows it falls through to Segoe UI. Do not load a webfont.
+Load two webfonts from Google Fonts with `display=swap`:
 
-- Page titles: medium weight, tight tracking, about 2.25rem on a phone and larger from `md` up.
-- Section labels: small, muted, medium weight.
+- **Serif:** Newsreader (`font-serif`) for the author’s name, section headings, book titles, pull quotes, and blog `.prose` body. Fallbacks: Georgia, Times New Roman, serif.
+- **Sans:** Source Sans 3 (`font-sans`) for navigation, dates, badges, CTAs, and UI metadata. Fallbacks: system-ui, sans-serif.
+
+Hierarchy:
+
+- Page titles: Newsreader, medium weight, about 2.25rem on a phone and larger from `md` up.
+- Section headings: Newsreader, about 1.5rem, ink color.
 - Body: 1rem to 1.125rem, relaxed line height, generous space between sections.
-- Secondary facts (dates, locations, descriptions): muted gray, never the accent.
+- Secondary facts (dates, venues, descriptions): muted, never the accent.
 
 ## Color
 
@@ -17,15 +22,16 @@ Colors follow `prefers-color-scheme`. There is no manual theme toggle.
 
 | Role | Light | Dark |
 | --- | --- | --- |
-| Surface (`paper`) | `#ffffff` | `#000000` |
-| Primary text (`ink`) | `#1d1d1f` | `#f5f5f7` |
-| Secondary text (`muted`) | `#6e6e73` | `#a1a1a6` |
-| Accent | `#2d4cb1` | `#9aacef` |
-| Hairline | `rgb(0 0 0 / 0.08)` | `rgb(255 255 255 / 0.12)` |
+| Page surface (`paper`) | `#faf8f5` | `#1a1714` |
+| Card surface (`card`) | `#ffffff` | `#241f1b` |
+| Primary text (`ink`) | `#1c1917` | `#f5f0ea` |
+| Secondary text (`muted`) | `#6b6560` | `#a39e97` |
+| Accent | `#7a2e3a` | `#c98993` |
+| Hairline | `rgb(28 25 23 / 0.1)` | `rgb(245 240 234 / 0.12)` |
 
-The accent is the logo blue, and the only chromatic color. Light mode uses the mark’s own `#2d4cb1`. Dark mode lightens that same blue to `#9aacef` so the mark and links stay readable on black. Use it for the logo, the active nav item, organization names, and text links. Do not introduce a second brand color.
+The accent is a deep literary burgundy — the only chromatic brand color. Use it for the active nav item, publisher/venue highlights, text links, and primary Amazon CTAs. Book covers carry their own color; do not introduce a second brand accent.
 
-Tokens live in `src/style.css` as CSS variables, then mapped with Tailwind `@theme inline` so utilities such as `bg-paper`, `text-ink`, `text-muted`, `text-accent`, and `ring-line` follow the system theme.
+Tokens live in `src/style.css` as CSS variables, then mapped with Tailwind `@theme inline` so utilities such as `bg-paper`, `bg-card`, `text-ink`, `text-muted`, `text-accent`, `font-serif`, and `ring-line` follow the system theme.
 
 ## Components
 
@@ -33,12 +39,15 @@ Cards share `AppCard`:
 
 - Radius `1.25rem` (`rounded-card`), with `corner-shape: squircle` where the browser supports continuous corners.
 - Padding of at least `1.5rem`.
+- Card fill via `bg-card` so cards lift off the warm paper page.
 - A two-layer shadow (`shadow-card`): a tight 1px lift and a soft 24px falloff.
-- A 1px hairline (`ring-line`) so the edge stays visible on pure black, where the shadow disappears.
+- A 1px hairline (`ring-line`) so the edge stays visible in dark mode.
 
-The top bar is sticky, translucent (`bg-paper/70`), and blurred (`backdrop-blur-xl`). After the page scrolls, it also picks up `shadow-card`. Navigation labels are “Profile” and “Blog”. Below the `md` breakpoint they collapse into a hamburger button with `aria-expanded`.
+The top bar is sticky, translucent (`bg-paper/70`), and blurred (`backdrop-blur-xl`). After the page scrolls, it also picks up `shadow-card`. Navigation labels are **Perfil** and **Blog**. Below the `md` breakpoint they collapse into a hamburger button with Spanish `aria-expanded` labels.
 
-Blog posts use Tailwind Typography (`prose prose-neutral dark:prose-invert`) so Markdown images stay within the column and fenced code blocks keep a readable mono treatment.
+Portraits and book covers use `object-cover`, subtle `ring-line` borders, and paths resolved with `import.meta.env.BASE_URL` so GitHub Pages under `/susana-biondini/` works.
+
+Blog posts use Tailwind Typography (`prose prose-neutral dark:prose-invert`) with Newsreader on the prose body so Markdown stays within the column and long-form reading feels literary.
 
 ## Motion
 

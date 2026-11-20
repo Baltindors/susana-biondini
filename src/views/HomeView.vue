@@ -5,7 +5,7 @@ import LogoMark from '../components/LogoMark.vue'
 import SocialLinks from '../components/SocialLinks.vue'
 import { profile } from '../data/profile.js'
 
-useTitle('Leonardo Sanchez')
+useTitle('Susana Biondini')
 
 const rise = {
   initial: { opacity: 0, y: 12 },
@@ -25,15 +25,15 @@ const rise = {
       >
         <LogoMark class="h-10" />
       </div>
-      <p class="mt-5 text-sm text-muted">{{ profile.location }}</p>
+      <p v-if="profile.location" class="mt-5 text-sm text-muted">{{ profile.location }}</p>
       <h1 class="mt-3 text-4xl font-medium tracking-tight text-ink md:text-5xl">
         {{ profile.name }}
       </h1>
-      <p class="mt-3 text-lg text-muted">{{ profile.title }}</p>
-      <SocialLinks class="mt-4" />
+      <p v-if="profile.title" class="mt-3 text-lg text-muted">{{ profile.title }}</p>
+      <SocialLinks v-if="profile.socials.length" class="mt-4" />
     </header>
 
-    <section class="mt-14">
+    <section v-if="profile.currentFocus.summary" class="mt-14">
       <h2 class="text-sm font-medium text-muted">{{ profile.currentFocus.label }}</h2>
       <AppCard
         v-motion
@@ -46,6 +46,7 @@ const rise = {
     </section>
 
     <section
+      v-if="profile.summary"
       v-motion
       class="mt-14"
       :initial="rise.initial"
@@ -56,6 +57,7 @@ const rise = {
     </section>
 
     <section
+      v-if="profile.stack.length"
       v-motion
       class="mt-14"
       :initial="rise.initial"
@@ -73,7 +75,7 @@ const rise = {
       </ul>
     </section>
 
-    <section class="mt-14">
+    <section v-if="profile.experience.length" class="mt-14">
       <h2 class="text-sm font-medium text-muted">Work</h2>
       <div class="mt-4 space-y-4">
         <AppCard
@@ -91,7 +93,7 @@ const rise = {
       </div>
     </section>
 
-    <section class="mt-14">
+    <section v-if="profile.hobbies.length" class="mt-14">
       <h2 class="text-sm font-medium text-muted">Hobbies</h2>
       <div class="mt-4 grid gap-4 sm:grid-cols-2">
         <AppCard

@@ -14,13 +14,13 @@ const year = new Date().getFullYear()
           <LogoMark class="mt-0.5 h-12 shrink-0 text-ink" />
           <div>
             <p class="font-medium tracking-tight">{{ profile.name }}</p>
-            <p class="mt-1 text-sm text-muted">{{ profile.title }}</p>
-            <p class="mt-0.5 text-sm text-muted">{{ profile.location }}</p>
+            <p v-if="profile.title" class="mt-1 text-sm text-muted">{{ profile.title }}</p>
+            <p v-if="profile.location" class="mt-0.5 text-sm text-muted">{{ profile.location }}</p>
           </div>
         </div>
 
         <div class="flex flex-col gap-5 sm:items-end">
-          <p class="sm:text-right">
+          <p v-if="profile.email" class="sm:text-right">
             <span class="text-xs font-medium text-muted">Email</span>
             <a
               :href="`mailto:${profile.email}`"
@@ -29,7 +29,7 @@ const year = new Date().getFullYear()
               {{ profile.email }}
             </a>
           </p>
-          <p class="sm:text-right">
+          <p v-if="profile.phone" class="sm:text-right">
             <span class="text-xs font-medium text-muted">Phone</span>
             <a
               :href="profile.phoneHref"
@@ -38,7 +38,7 @@ const year = new Date().getFullYear()
               {{ profile.phone }}
             </a>
           </p>
-          <SocialLinks class="w-full sm:justify-end" />
+          <SocialLinks v-if="profile.socials.length" class="w-full sm:justify-end" />
         </div>
       </div>
 

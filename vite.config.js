@@ -9,7 +9,7 @@ const bufferShim = fileURLToPath(new URL('./src/shims/buffer.js', import.meta.ur
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/susana-biondini/',
   resolve: {
     alias: {
       buffer: bufferShim,

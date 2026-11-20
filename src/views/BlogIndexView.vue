@@ -5,7 +5,7 @@ import AppCard from '../components/AppCard.vue'
 import LogoMark from '../components/LogoMark.vue'
 import { posts } from '../content/posts.js'
 
-useTitle('Blog · Leonardo Sanchez')
+useTitle('Blog · Susana Biondini')
 
 const rise = {
   initial: { opacity: 0, y: 12 },
@@ -26,7 +26,7 @@ const rise = {
         <LogoMark class="h-10" />
       </div>
       <h1 class="mt-5 text-4xl font-medium tracking-tight">Blog</h1>
-      <p class="mt-3 text-lg text-muted">Notes on product, platforms, and the work in progress.</p>
+      <p class="mt-3 text-lg text-muted">Notes and updates from Susana Biondini.</p>
     </header>
 
     <div class="mt-10 space-y-4">

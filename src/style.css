@@ -40,11 +40,12 @@
   display: inline-block;
   aspect-ratio: 284 / 388;
   background-color: currentColor;
-  mask-image: url('/logo.png');
+  /* Relative to bundled CSS under /assets so Vite `base` (project Pages) resolves correctly */
+  mask-image: url(../logo.png);
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  -webkit-mask-image: url('/logo.png');
+  -webkit-mask-image: url(../logo.png);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;

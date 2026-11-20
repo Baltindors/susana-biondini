@@ -2,7 +2,7 @@
 
 backend:
   name: github
-  repo: Baltindors/leosan-info
+  repo: Baltindors/susana-biondini
   branch: main
 
 media_folder: /public/uploads

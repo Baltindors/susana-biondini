@@ -35,7 +35,7 @@ watch(
     <div class="mx-auto flex max-w-3xl items-center justify-between px-5 py-3">
       <RouterLink to="/" class="flex items-center gap-2.5 text-sm font-medium tracking-tight text-ink">
         <LogoMark class="h-7 text-accent" />
-        Leonardo Sanchez
+        Susana Biondini
       </RouterLink>
 
       <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">

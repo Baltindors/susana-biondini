@@ -14,7 +14,7 @@ const links = [
   { id: 'perfil', to: { path: '/' }, label: 'Perfil' },
   { id: 'obra', to: { path: '/', hash: '#obra' }, label: 'Obra' },
   { id: 'galeria', to: { path: '/galeria' }, label: 'Galería' },
-  { id: 'escritos', to: { path: '/blog' }, label: 'Escritos' },
+  { id: 'escritos', to: { path: '/blog' }, label: 'Entrelíneas' },
 ]
 
 const brandMark = computed(

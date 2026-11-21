@@ -2,6 +2,7 @@
 title: Bienvenida a este espacio literario
 date: 2026-11-19T12:00:00
 description: Una invitación cálida a recorrer la poesía, el teatro y las novedades de Susana I. Biondini.
+categoria: notas
 ---
 
 Bienvenida y bienvenido a este rincón de palabras.

@@ -51,7 +51,7 @@ Cards share `AppCard`:
 - A two-layer shadow (`shadow-card`): a tight 1px lift and a soft 24px falloff.
 - A 1px hairline (`ring-line`) so the edge stays visible in dark mode.
 
-The top bar is sticky, translucent (`bg-paper/70`), and blurred (`backdrop-blur-xl`). After the page scrolls, it also picks up `shadow-card`. Navigation labels are **Perfil**, **Obra**, **Galería**, and **Escritos**. Below the `md` breakpoint they collapse into a hamburger button with Spanish `aria-expanded` labels.
+The top bar is sticky, translucent (`bg-paper/70`), and blurred (`backdrop-blur-xl`). After the page scrolls, it also picks up `shadow-card`. Navigation labels are **Perfil**, **Obra**, **Galería**, and **Entrelíneas**. Below the `md` breakpoint they collapse into a hamburger button with Spanish `aria-expanded` labels.
 
 Portraits and book covers use `object-cover`, subtle `ring-line` borders, and paths resolved with `import.meta.env.BASE_URL` so GitHub Pages under `/susana-biondini/` works.
 

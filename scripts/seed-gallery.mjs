@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const galleryDir = path.join(root, 'public', 'images', 'gallery')
 const outFile = path.join(root, 'src', 'content', 'gallery.json')
-const logPath = path.join(root, '.cursor', 'debug-7c97eb.log')
 
 const captionsByFile = {
   'Bohemia.jpg':
@@ -90,28 +89,6 @@ function preferredOrder(filename) {
   return idx === -1 ? priority.length + filename.localeCompare(filename) : idx
 }
 
-function agentLog(hypothesisId, message, data) {
-  const entry = {
-    sessionId: '7c97eb',
-    runId: 'post-fix',
-    hypothesisId,
-    location: 'scripts/seed-gallery.mjs',
-    message,
-    data,
-    timestamp: Date.now(),
-  }
-  fs.mkdirSync(path.dirname(logPath), { recursive: true })
-  fs.appendFileSync(logPath, `${JSON.stringify(entry)}\n`)
-  fetch('http://127.0.0.1:7935/ingest/78ad64d2-dd14-4c31-8439-b58578706c0f', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Debug-Session-Id': '7c97eb',
-    },
-    body: JSON.stringify(entry),
-  }).catch(() => {})
-}
-
 const files = fs
   .readdirSync(galleryDir)
   .filter((name) => /\.jpe?g$/i.test(name))
@@ -128,14 +105,5 @@ const items = files.map((filename) => {
 
 fs.mkdirSync(path.dirname(outFile), { recursive: true })
 fs.writeFileSync(outFile, `${JSON.stringify(items, null, 2)}\n`, 'utf8')
-
-agentLog('B', 'Seeded top-level gallery.json array', {
-  diskCount: files.length,
-  writtenCount: items.length,
-  outFile: path.relative(root, outFile).replaceAll('\\', '/'),
-  isTopLevelArray: true,
-  captionedCount: items.filter((item) => item.caption).length,
-  firstImage: items[0]?.image ?? null,
-})
 
 console.log(`Seeded ${items.length} gallery items → ${path.relative(root, outFile)}`)

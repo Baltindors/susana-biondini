@@ -8,6 +8,13 @@ const rawPosts = import.meta.glob('./blog/*.md', {
 
 const components = import.meta.glob('./blog/*.md', { eager: true })
 
+export const categoriaLabels = {
+  notas: 'Nota',
+  reflexiones: 'Reflexión',
+}
+
+const CATEGORIA_VALUES = new Set(Object.keys(categoriaLabels))
+
 function slugFromPath(path) {
   return path.split('/').pop().replace(/\.md$/, '')
 }
@@ -23,24 +30,36 @@ function formatDate(value) {
   }).format(date)
 }
 
+function normalizeCategoria(value) {
+  return CATEGORIA_VALUES.has(value) ? value : 'notas'
+}
+
 export const posts = Object.entries(rawPosts)
   .map(([path, raw]) => {
     const source = String(raw).replace(/\r\n/g, '\n')
     const { attributes } = fm(source)
     const slug = slugFromPath(path)
     const date = attributes.date ?? ''
+    const categoria = normalizeCategoria(attributes.categoria)
     return {
       slug,
       title: attributes.title ?? slug,
       date,
       dateLabel: formatDate(date),
       description: attributes.description ?? '',
+      categoria,
+      categoriaLabel: categoriaLabels[categoria],
       audio: attributes.audio ?? '',
       vtt: attributes.vtt ?? '',
       component: components[path]?.default,
     }
   })
   .sort((a, b) => new Date(b.date) - new Date(a.date))
+
+export const postsByCategoria = {
+  notas: posts.filter((post) => post.categoria === 'notas'),
+  reflexiones: posts.filter((post) => post.categoria === 'reflexiones'),
+}
 
 export function getPost(slug) {
   return posts.find((post) => post.slug === slug)

@@ -14,7 +14,7 @@ export const profile = {
       'Desde septiembre de 2026 es miembro de Arte Sur en Almuñécar, Granada, donde continúa su labor literaria y teatral.',
   },
   summary:
-    'Susana I. Biondini nació en Buenos Aires el 8 de agosto de 1957. Se formó en teatro entre 1970 y 1974, y entre 1979 y 1982 participó de los talleres de escritura de Aunarte. Décadas después retomó el escenario en Miami con Actors Arena Group (2013–2018), donde escribió y estrenó el microteatro Bohemia. Hoy, integrada a Arte Sur en Almuñécar (Granada), sigue escribiendo narrativa, poesía y teatro con la misma vocación que la acompaña desde la adolescencia.',
+    'Susana I. Biondini nació en Buenos Aires el 8 de agosto de 1957. Se formó en teatro entre 1970 y 1974, y entre 1979 y 1982 participó de los talleres de escritura de Aunarte. Décadas después retomó el escenario en Miami con Actors Arena Group (2013–2018), donde escribió y estrenó la obra para micro teatro Bohemia. Hoy, integrada a Arte Sur en Almuñécar y es miembro del Club de Lectura La Herradura, (ambos en la provincia de Granada). Sigue escribiendo narrativa, poesía con la misma vocación que la acompaña desde la adolescencia.',
   portraits: {
     hero: {
       src: image('susy_headshot_2.png'),

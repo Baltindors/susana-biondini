@@ -10,8 +10,8 @@ public_folder: /uploads
 
 collections:
   - name: blog
-    label: Escritos
-    label_singular: Escrito
+    label: Entrelíneas
+    label_singular: Entrada
     folder: /src/content/blog
     create: true
     extension: md
@@ -21,6 +21,13 @@ collections:
       - { label: Título, name: title, widget: string }
       - { label: Fecha de publicación, name: date, widget: datetime }
       - { label: Descripción, name: description, widget: text }
+      - label: Tipo
+        name: categoria
+        widget: select
+        required: true
+        options:
+          - { label: Nota, value: notas }
+          - { label: Reflexión, value: reflexiones }
       - { label: "Audio MP3", name: audio, widget: file, required: false }
       - { label: "Marcas de tiempo del audio (.vtt)", name: vtt, widget: file, required: false }
       - { label: Cuerpo, name: body, widget: markdown }

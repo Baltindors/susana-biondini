@@ -13,6 +13,7 @@ const scrolled = computed(() => y.value > 0)
 const links = [
   { id: 'perfil', to: { path: '/' }, label: 'Perfil' },
   { id: 'obra', to: { path: '/', hash: '#obra' }, label: 'Obra' },
+  { id: 'galeria', to: { path: '/galeria' }, label: 'Galería' },
   { id: 'escritos', to: { path: '/blog' }, label: 'Escritos' },
 ]
 
@@ -23,6 +24,7 @@ const brandMark = computed(
 function isLinkActive(link) {
   if (link.id === 'obra') return route.path === '/' && route.hash === '#obra'
   if (link.id === 'perfil') return route.path === '/' && route.hash !== '#obra'
+  if (link.id === 'galeria') return route.path.startsWith('/galeria')
   if (link.id === 'escritos') return route.path.startsWith('/blog')
   return false
 }

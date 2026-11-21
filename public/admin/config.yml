@@ -24,3 +24,19 @@ collections:
       - { label: "Audio MP3", name: audio, widget: file, required: false }
       - { label: "Marcas de tiempo del audio (.vtt)", name: vtt, widget: file, required: false }
       - { label: Cuerpo, name: body, widget: markdown }
+
+  # Sveltia single-file collection: JSON must be a top-level array of entry objects.
+  - name: galeria
+    label: Galería
+    label_singular: Imagen
+    file: /src/content/gallery.json
+    identifier_field: alt
+    media_folder: /public/images/gallery
+    public_folder: /images/gallery
+    create: true
+    delete: true
+    summary: "{{alt}}"
+    fields:
+      - { label: Imagen, name: image, widget: image }
+      - { label: Texto alternativo, name: alt, widget: string }
+      - { label: Texto explicativo, name: caption, widget: text, required: false }

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import BlogIndexView from '../views/BlogIndexView.vue'
 import BlogPostView from '../views/BlogPostView.vue'
+import GalleryView from '../views/GalleryView.vue'
 import HomeView from '../views/HomeView.vue'
 
 const PAGE_TRANSITION_MS = 350
@@ -37,6 +38,7 @@ const router = createRouter({
   },
   routes: [
     { path: '/', name: 'profile', component: HomeView },
+    { path: '/galeria', name: 'gallery', component: GalleryView },
     { path: '/blog', name: 'blog', component: BlogIndexView },
     { path: '/blog/:slug', name: 'post', component: BlogPostView },
   ],

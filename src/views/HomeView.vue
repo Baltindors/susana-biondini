@@ -1,6 +1,7 @@
 <script setup>
 import { useTitle } from '@vueuse/core'
 import AppCard from '../components/AppCard.vue'
+import IntroSequence from '../components/IntroSequence.vue'
 import SocialLinks from '../components/SocialLinks.vue'
 import { profile } from '../data/profile.js'
 
@@ -17,6 +18,7 @@ const rise = {
 </script>
 
 <template>
+  <IntroSequence />
   <main class="mx-auto max-w-3xl px-5 py-12 md:py-20">
     <header
       v-motion

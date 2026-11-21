@@ -7,7 +7,7 @@ const STEP = 1.4
 const LIFE = 4.0
 const FIRST = 0.12
 
-const emblemSrc = `${import.meta.env.BASE_URL}favicon.svg`
+const emblemSrc = `${import.meta.env.BASE_URL}favicon.jpg`
 const show = ref(false)
 
 let timer = 0
